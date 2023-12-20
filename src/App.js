@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { auth } from './firebase/config';
+import Title from './comps/Title';
+import UploadForm from './comps/UploadForm';
+import ImageGrid from './comps/ImageGrid';
+import Modal from './comps/Modal';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Home from './comps/Home';
+import Admin from './comps/Admin';
+import SignIn from './comps/SignIn';
+import Auth from './comps/Auth';
+import { signOut } from 'firebase/auth';
+
 
 function App() {
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [active, setActive] = useState("home");
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      setUser(null);
+      Navigate("/auth")
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title user={user} handleLogout={handleLogout} />
+      <Routes>
+        <Route path='/' element={<Home selectedImg={selectedImg} setSelectedImg={setSelectedImg} />} />
+        <Route path='/admin' element={<Admin selectedImg={selectedImg} setSelectedImg={setSelectedImg} user={user} />} />
+        <Route path='/auth' element={<Auth setUser={setUser} />} />
+      </Routes>
     </div>
   );
 }
