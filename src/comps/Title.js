@@ -5,7 +5,7 @@ const Title = ({ user, handleLogout }) => {
         <div className="title">
             <div className='top-title'>
                 <h1 style={{fontSize: '25px'}}>Lulu Jovic's</h1>
-                <div>
+                <div style={{marginTop: '8px'}}>
                       {user ?  <h1 style={{color: '#4e4e4e'}}>Welcome, {user.displayName}!</h1> : <h1 style={{color: '#4e4e4e'}}>Welcome, client!</h1>}
                       {user && <button onClick={handleLogout}>Logout</button>}
                 </div>
