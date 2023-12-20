@@ -137,7 +137,7 @@ const Auth = ({setActive, setUser}) => {
               {!signUp ? (
                 <>
                   <div className='text-center justify-content-center mt-2 pt-2'>
-                    <p className='small fw-bold mt-2 pt-1 mb-0'>
+                    {/* <p className='small fw-bold mt-2 pt-1 mb-0'>
                       Don't have an account ? &nbsp;
                       <span
                         style={{ textDecoration: "none", cursor: "pointer", color: '#ad0d65'  }}
@@ -145,7 +145,7 @@ const Auth = ({setActive, setUser}) => {
                       >
                         Sign Up
                       </span>
-                    </p>
+                    </p> */}
                   </div>
                 </>
               ) : (
