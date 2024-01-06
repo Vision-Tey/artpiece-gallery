@@ -11,7 +11,7 @@ const Admin = ({ setSelectedImg, selectedImg, user, selectedImgId, setSelectedIm
             {user ? (
                 <div>
                     <UploadForm />
-                    <ImageGrid setSelectedImg={setSelectedImg} />
+                    <ImageGrid setSelectedImg={setSelectedImg} setSelectedImgId={setSelectedImgId} />
                     {selectedImg && (
                         <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}
                             selectedImgId={selectedImgId}
