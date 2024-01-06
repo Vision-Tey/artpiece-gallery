@@ -134,7 +134,7 @@ const Auth = ({setActive, setUser}) => {
             </form>
 
             <div>
-              {!signUp ? (
+              {/* {!signUp ? (
                 <>
                   <div className='text-center justify-content-center mt-2 pt-2'>
                     <p className='small fw-bold mt-2 pt-1 mb-0'>
@@ -163,7 +163,7 @@ const Auth = ({setActive, setUser}) => {
                 </>
               )
 
-              }
+              } */}
             </div>
           </div>
         </div>
