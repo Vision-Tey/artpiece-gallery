@@ -14,6 +14,7 @@ import { signOut } from 'firebase/auth';
 
 function App() {
   const [selectedImg, setSelectedImg] = useState(null);
+  const [selectedImgId, setSelectedImgId] = useState(null)
   const [active, setActive] = useState("home");
 
   const [user, setUser] = useState(null);
@@ -33,12 +34,17 @@ function App() {
     })
   }
 
+
   return (
     <div className="App">
       <Title user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path='/' element={<Home selectedImg={selectedImg} setSelectedImg={setSelectedImg} />} />
-        <Route path='/admin' element={<Admin selectedImg={selectedImg} setSelectedImg={setSelectedImg} user={user} />} />
+        <Route path='/' element={<Home selectedImg={selectedImg} setSelectedImg={setSelectedImg}
+          selectedImgId={selectedImgId}
+          setSelectedImgId={setSelectedImgId} />} />
+        <Route path='/admin' element={<Admin selectedImg={selectedImg}
+          setSelectedImg={setSelectedImg} user={user} selectedImgId={selectedImgId}
+          setSelectedImgId={setSelectedImgId} />} />
         <Route path='/auth' element={<Auth setUser={setUser} />} />
       </Routes>
     </div>

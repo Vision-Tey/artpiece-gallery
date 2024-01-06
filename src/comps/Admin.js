@@ -5,21 +5,24 @@ import Modal from './Modal'
 import SignIn from './SignIn'
 import Auth from './Auth'
 
-const Admin = ({ setSelectedImg, selectedImg, user }) => {
+const Admin = ({ setSelectedImg, selectedImg, user, selectedImgId, setSelectedImgId }) => {
     return (
         <div>
             {user ? (
-                   <div>
-                <UploadForm />
-                <ImageGrid setSelectedImg={setSelectedImg} />
-                {selectedImg && (
-                    <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-                )}
-            </div>
+                <div>
+                    <UploadForm />
+                    <ImageGrid setSelectedImg={setSelectedImg} />
+                    {selectedImg && (
+                        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}
+                            selectedImgId={selectedImgId}
+                            setSelectedImgId={setSelectedImgId} user={user}
+                        />
+                    )}
+                </div>
             ) : (
                 <Auth />
             )}
-         
+
 
         </div>
     )
